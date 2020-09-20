@@ -25,3 +25,12 @@ def search_all_cards
     end
     return cards
 end
+
+
+search_all_cards.each do |card|
+    if card.include?('image_uris')
+        MagicTheGatherigCard.create(name: card["name"], img_url: card['image_uris']['large'], price: card['prices']['usd'], cmc: card['cmc'], collector_number: card['collector_number'], color: card['colors'], foil: card['foil'], artist: card['artist'], lang: card['lang'], mana_cost: card['mana_cost'], rarity: card['rarity'], reprint: card['reprint'], reserved: card['reserved'], set: card['set'], set_type: card['set_type'], set_name: card['set_name'], type_line: card['type_line'])
+    else
+        MagicTheGatherigCard.create(name: card["name"], img_url: card['card_faces'][0]['image_uris']['large'], price: card['prices']['usd'], cmc: card['cmc'], collector_number: card['collector_number'], color: card['colors'], foil: card['foil'], artist: card['artist'], lang: card['lang'], mana_cost: card['mana_cost'], rarity: card['rarity'], reprint: card['reprint'], reserved: card['reserved'], set: card['set'], set_type: card['set_type'], set_name: card['set_name'], type_line: card['type_line'])
+    end
+end
