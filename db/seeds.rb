@@ -14,3 +14,14 @@ def card_names
     json = JSON.parse(response)['data']
     return json
 end
+
+
+
+def search_all_cards
+    cards = []
+    card_names.first(2000).each do |name|
+        response = RestClient.get('https://api.scryfall.com/cards/named?exact='+ name)
+        cards.push(json = JSON.parse(response))
+    end
+    return cards
+end
