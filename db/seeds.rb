@@ -19,7 +19,8 @@ end
 
 def search_all_cards
     cards = []
-    card_names.first(2000).each do |name|
+    card_names.slice(2000, 2000).each do |name|
+        name = name.force_encoding("iso-8859-1")
         response = RestClient.get('https://api.scryfall.com/cards/named?exact='+ name)
         cards.push(json = JSON.parse(response))
     end
