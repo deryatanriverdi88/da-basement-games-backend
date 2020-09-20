@@ -1,0 +1,39 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  img_url: MyString
+  price: MyString
+  cmc: MyString
+  collector_number: MyString
+  color: MyString
+  foil: false
+  artist: MyString
+  lang: MyString
+  mana_cost: MyString
+  rarity: MyString
+  reprint: false
+  reserved: false
+  set: MyString
+  set_type: MyString
+  set_name: MyString
+  type_line: MyString
+
+two:
+  name: MyString
+  img_url: MyString
+  price: MyString
+  cmc: MyString
+  collector_number: MyString
+  color: MyString
+  foil: false
+  artist: MyString
+  lang: MyString
+  mana_cost: MyString
+  rarity: MyString
+  reprint: false
+  reserved: false
+  set: MyString
+  set_type: MyString
+  set_name: MyString
+  type_line: MyString
