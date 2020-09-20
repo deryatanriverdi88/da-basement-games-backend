@@ -8,3 +8,9 @@
 
 # MagicTheGatherigCard.destroy_all
 # MagicTheGatherigCard.reset_pk_sequence
+
+def card_names
+    response = RestClient.get('https://api.scryfall.com/catalog/card-names' )
+    json = JSON.parse(response)['data']
+    return json
+end
