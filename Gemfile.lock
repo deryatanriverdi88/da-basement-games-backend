@@ -65,6 +65,7 @@ GEM
     crass (1.0.6)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.7.5)
     erubi (1.9.0)
     ffi (1.13.1)
     globalid (0.4.2)
@@ -93,6 +94,7 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.14.2)
     msgpack (1.3.3)
+    neatjson (0.8.4)
     netrc (0.11.0)
     nio4r (2.5.4)
     nokogiri (1.10.10)
@@ -158,6 +160,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.7)
+    unidecoder (1.1.2)
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -170,7 +173,9 @@ DEPENDENCIES
   activerecord-reset-pk-sequence
   bootsnap (>= 1.4.2)
   byebug
+  dotenv
   listen (~> 3.2)
+  neatjson (~> 0.8.1)
   pg (>= 0.18, < 2.0)
   puma (~> 4.1)
   rack-cors
@@ -179,6 +184,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
+  unidecoder (~> 1.1, >= 1.1.2)
 
 RUBY VERSION
    ruby 2.6.1p33
