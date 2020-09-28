@@ -37,14 +37,30 @@ def all_cards
     return json.flatten
 end
 
-def search_all_cards
-    cards = []
-    card_names.slice(2000, 2000).each do |name|
-        name = name.force_encoding("iso-8859-1")
-        response = RestClient.get('https://api.scryfall.com/cards/named?exact='+ name)
-        cards.push(json = JSON.parse(response))
+def check_rarity(values)
+    rarity = ""
+    values.each do |value|
+        if value['name'] === "Rarity"
+            if value['value'] == 'U'
+                rarity = 'Uncommon'
+            elsif value['value'] == 'T'
+                rarity = 'Token'
+            elsif value['value'] == 'S'
+                rarity = 'Special'
+            elsif value['value'] == 'P'
+                rarity = 'Promo'
+            elsif value['value'] == 'M'
+                rarity = 'Mythic'
+            elsif value['value'] == 'L'
+                rarity = 'Land'
+            elsif value['value'] == 'C'
+                rarity = 'Common'
+            elsif value['value'] == 'R'
+                rarity = 'Rare'
+            end
+        end
     end
-    return cards
+    return rarity
 end
 
 
