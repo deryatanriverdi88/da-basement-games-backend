@@ -3,15 +3,16 @@ class CreateMagicTheGatherigCards < ActiveRecord::Migration[6.0]
     create_table :magic_the_gatherig_cards do |t|
       t.string :name
       t.string :img_url
-      t.string :price
-      t.string :cmc
-      t.string :collector_number
-      t.string :color
-      t.boolean :foil
-      t.string :artist
-      t.string :lang
-      t.string :mana_cost
+      t.integer :category_id
+      t.integer :product_id
+      t.integer :group_id
       t.string :rarity
+      t.string :sub_type
+      t.string :price
+      t.string :color
+      t.string :text
+      t.boolean :foil
+      t.string :mana_cost
       t.boolean :reprint
       t.boolean :reserved
       t.string :set
