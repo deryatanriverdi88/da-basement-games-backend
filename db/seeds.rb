@@ -91,4 +91,17 @@ end
 #         end
 # end
 
+MagicTheGatherigCard.all.each do |c|
+    card_response = RestClient.get'https://api.tcgplayer.com/catalog/products/'+c['product_id'].to_s+'?getExtendedFields=true', {:Authorization => 'Bearer '+ @access_token}
+    card_json = JSON.parse(card_response)['results'][0]
+
+    group_response = RestClient.get 'https://api.tcgplayer.com/catalog/groups/'+ c['group_id'].to_s, {:Authorization => 'Bearer '+ @access_token}
+    group_json = JSON.parse(group_response)['results'][0]
+
+    c.update(
+        sub_type: check_sub_type(card_json['extendedData']),
+        group_name: group_json['name']
+    )
+end
+
 puts "seeded"
