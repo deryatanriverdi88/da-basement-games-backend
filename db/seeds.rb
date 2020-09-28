@@ -80,6 +80,15 @@ def check_sub_type(values)
             sub_type = value['value']
         end
     end
+    return sub_type
 end
+
+# all_cards.each do |card|
+#         if card
+#         MagicTheGatherigCard.create(name: card["name"], img_url: card['imageUrl'], category_id: card['categoryId'], group_id: card['groupId'], product_id: card['productId'],rarity: check_rarity(card['extendedData']), sub_type: check_text_or_sub_type(card['extendedData']), text: check_text_or_sub_type(card['extendedData']))
+#         else
+#             puts "no more card"
+#         end
+# end
 
 puts "seeded"
