@@ -63,6 +63,15 @@ def check_rarity(values)
     return rarity
 end
 
+def check_text(values)
+    text = ''
+    values.each do |value|
+        if value['name'] == "OracleText"
+            text = value['value']
+        end
+    end
+    return text
+end
 
 search_all_cards.each do |card|
     if card.include?('image_uris')
