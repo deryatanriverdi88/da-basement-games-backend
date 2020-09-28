@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_20_032732) do
+ActiveRecord::Schema.define(version: 2020_09_28_043611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,15 +18,16 @@ ActiveRecord::Schema.define(version: 2020_09_20_032732) do
   create_table "magic_the_gatherig_cards", force: :cascade do |t|
     t.string "name"
     t.string "img_url"
-    t.string "price"
-    t.string "cmc"
-    t.string "collector_number"
-    t.string "color"
-    t.boolean "foil"
-    t.string "artist"
-    t.string "lang"
-    t.string "mana_cost"
+    t.integer "category_id"
+    t.integer "product_id"
+    t.integer "group_id"
     t.string "rarity"
+    t.string "sub_type"
+    t.string "price"
+    t.string "color"
+    t.string "text"
+    t.boolean "foil"
+    t.string "mana_cost"
     t.boolean "reprint"
     t.boolean "reserved"
     t.string "set"
@@ -35,6 +36,7 @@ ActiveRecord::Schema.define(version: 2020_09_20_032732) do
     t.string "type_line"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "group_name"
   end
 
 end

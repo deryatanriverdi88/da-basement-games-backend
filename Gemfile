@@ -33,7 +33,7 @@ gem 'unidecoder', '~> 1.1', '>= 1.1.2'
 
 gem 'neatjson', '~> 0.8.1'
 
-gem 'dotenv'
+gem 'dotenv-rails', groups: [:development, :test]
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
