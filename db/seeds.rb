@@ -76,7 +76,7 @@ end
 def check_sub_type(values)
     sub_type = ''
     values.each do |value|
-        if value['name'] == "SubName"
+        if value['name'] == "SubType"
             sub_type = value['value']
         end
     end
