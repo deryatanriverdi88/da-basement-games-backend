@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_28_043611) do
+ActiveRecord::Schema.define(version: 2020_09_29_050230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,20 +23,20 @@ ActiveRecord::Schema.define(version: 2020_09_28_043611) do
     t.integer "group_id"
     t.string "rarity"
     t.string "sub_type"
-    t.string "price"
     t.string "color"
     t.string "text"
     t.boolean "foil"
-    t.string "mana_cost"
-    t.boolean "reprint"
-    t.boolean "reserved"
-    t.string "set"
-    t.string "set_type"
-    t.string "set_name"
-    t.string "type_line"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "group_name"
+    t.decimal "normal_low_price"
+    t.decimal "normal_mid_price"
+    t.decimal "normal_high_price"
+    t.decimal "normal_market_price"
+    t.decimal "foil_low_price"
+    t.decimal "foil_mid_price"
+    t.decimal "foil_high_price"
+    t.decimal "foil_market_price"
   end
 
 end

@@ -76,7 +76,7 @@ end
 def check_sub_type(values)
     sub_type = ''
     values.each do |value|
-        if value['name'] == "SubName"
+        if value['name'] == "SubType"
             sub_type = value['value']
         end
     end
@@ -91,17 +91,24 @@ end
 #         end
 # end
 
-MagicTheGatherigCard.all.each do |c|
-    card_response = RestClient.get'https://api.tcgplayer.com/catalog/products/'+c['product_id'].to_s+'?getExtendedFields=true', {:Authorization => 'Bearer '+ @access_token}
-    card_json = JSON.parse(card_response)['results'][0]
+MagicTheGatherigCard.default_order.all.slice(0, 10000).each do |c|
+    puts 'card name => ' + c['name'] + ' product_id => ' + c['product_id'].to_s + ' id => ' + c['id'].to_s
 
-    group_response = RestClient.get 'https://api.tcgplayer.com/catalog/groups/'+ c['group_id'].to_s, {:Authorization => 'Bearer '+ @access_token}
-    group_json = JSON.parse(group_response)['results'][0]
+    price_response = RestClient.get'https://api.tcgplayer.com/pricing/product/' + c['product_id'].to_s, {:Authorization => 'Bearer '+ @access_token}
 
+    price_json = JSON.parse(price_response)['results']
+    puts 'price_json => ', price_json
     c.update(
-        sub_type: check_sub_type(card_json['extendedData']),
-        group_name: group_json['name']
+        normal_low_price: price_json[0]['lowPrice'],
+        normal_mid_price: price_json[0]['midPrice'],
+        normal_high_price: price_json[0]['highPrice'],
+        normal_market_price: price_json[0]['marketPrice'],
+        foil_low_price: price_json[1]['lowPrice'],
+        foil_mid_price:price_json[1]['lowPrice'],
+        foil_high_price: price_json[1]['lowPrice'],
+        foil_market_price:price_json[1]['lowPrice']
     )
+    puts 'card updated' + ' card normal_low_price => ' + c['normal_low_price'].to_s
 end
 
 puts "seeded"
