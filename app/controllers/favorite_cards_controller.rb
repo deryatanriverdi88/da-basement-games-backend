@@ -34,4 +34,6 @@ class FavoriteCardsController < ApplicationController
     def update_params
         params.permit(:amount)
     end
+
+    before_filter :authorize, only: [:edit, :update, :destroy]
 end
