@@ -13,4 +13,10 @@ class FavoriteCardsController < ApplicationController
         favorite_card = FavoriteCard.create(favorite_cards_params)
         render json: favorite_card
     end
+
+    def update
+        favorite_card = FavoriteCard.find(params[:id])
+        favorite_card.update(update_params)
+        render json: favorite_card
+    end
 end
