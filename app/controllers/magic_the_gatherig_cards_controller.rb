@@ -5,7 +5,7 @@ class MagicTheGatherigCardsController < ApplicationController
     end
 
     def last_ten
-        # render json:cards = MagicTheGatherigCard.default_order.all.slice(50000, MagicTheGatherigCard.default_order.all.length-1)
-        render json:cards = MagicTheGatherigCard.default_order.all.first(100)
+        render json:cards = MagicTheGatherigCard.default_order.all.last(100)
+        # render json:cards = MagicTheGatherigCard.default_order.all.slice(7000, 100)
     end
 end
