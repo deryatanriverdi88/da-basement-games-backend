@@ -35,6 +35,11 @@ gem 'neatjson', '~> 0.8.1'
 
 gem 'dotenv-rails', groups: [:development, :test]
 
+gem 'bcrypt-ruby', '3.1.2'
+gem 'jwt', '~> 1.5', '>= 1.5.4'
+gem 'dotenv-rails', groups: [:development, :test]
+gem 'active_model_serializers', '~> 0.10.2'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

@@ -1,4 +1,6 @@
 class MagicTheGatherigCard < ApplicationRecord
+    has_many :favorite_cards
+
     def self.default_order
         order('id ASC')
     end

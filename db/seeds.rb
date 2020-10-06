@@ -91,7 +91,7 @@ end
 #         end
 # end
 
-MagicTheGatherigCard.default_order.all.slice(0, 10000).each do |c|
+MagicTheGatherigCard.default_order.all.slice(50000, MagicTheGatherigCard.default_order.all.length-1).each do |c|
     puts 'card name => ' + c['name'] + ' product_id => ' + c['product_id'].to_s + ' id => ' + c['id'].to_s
 
     price_response = RestClient.get'https://api.tcgplayer.com/pricing/product/' + c['product_id'].to_s, {:Authorization => 'Bearer '+ @access_token}
@@ -104,9 +104,9 @@ MagicTheGatherigCard.default_order.all.slice(0, 10000).each do |c|
         normal_high_price: price_json[0]['highPrice'],
         normal_market_price: price_json[0]['marketPrice'],
         foil_low_price: price_json[1]['lowPrice'],
-        foil_mid_price:price_json[1]['lowPrice'],
-        foil_high_price: price_json[1]['lowPrice'],
-        foil_market_price:price_json[1]['lowPrice']
+        foil_mid_price:price_json[1]['midPrice'],
+        foil_high_price: price_json[1]['highPrice'],
+        foil_market_price:price_json[1]['marketPrice']
     )
     puts 'card updated' + ' card normal_low_price => ' + c['normal_low_price'].to_s
 end
