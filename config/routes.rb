@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :users
-  post "/login", to: "session#login"
+  post "/login", to: "sessions#login"
   post '/signup', to: 'users#create'
   get '/profile', to: 'users#profile'
   resources :favorite_cards
