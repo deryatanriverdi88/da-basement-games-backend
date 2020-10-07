@@ -16,25 +16,7 @@ ActiveRecord::Schema.define(version: 2020_10_06_031056) do
   enable_extension "plpgsql"
 
   create_table "favorite_cards", force: :cascade do |t|
-    t.string "name"
-    t.string "img_url"
-    t.integer "category_id"
-    t.integer "product_id"
-    t.integer "group_id"
-    t.string "rarity"
-    t.string "sub_type"
-    t.string "color"
-    t.string "text"
-    t.boolean "foil"
-    t.string "group_name"
-    t.decimal "normal_low_price"
-    t.decimal "normal_mid_price"
-    t.decimal "normal_high_price"
-    t.decimal "normal_market_price"
-    t.decimal "foil_low_price"
-    t.decimal "foil_mid_price"
-    t.decimal "foil_high_price"
-    t.decimal "foil_market_price"
+    t.integer "magic_the_gatherig_card_id"
     t.integer "amount"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
@@ -67,6 +49,8 @@ ActiveRecord::Schema.define(version: 2020_10_06_031056) do
 
   create_table "users", force: :cascade do |t|
     t.string "email"
+    t.string "username"
+    t.string "role"
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

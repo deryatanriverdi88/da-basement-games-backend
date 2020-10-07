@@ -10,8 +10,12 @@ class FavoriteCardsController < ApplicationController
     end
 
     def create
-        favorite_card = FavoriteCard.create(favorite_cards_params)
-        render json: favorite_card
+        favorite_card = FavoriteCard.create(favorite_card_params)
+        if favorite_card.valid?
+            render json: favorite_card
+        else
+            render json: {errors: favorite_card.errors.full_messages}
+        end
     end
 
     def update
@@ -28,12 +32,10 @@ class FavoriteCardsController < ApplicationController
     private
 
     def favorite_card_params
-        params.permit(:user_id, :magic_the_gatherig_id, :name, :img_url, :category_id, :product_id, :group_id, :rarity, :sub_type, :color, :text, :foil, :group_name, :normal_low_price, :normal_mid_price, :normal_high_price, :normal_market_price, :foil_low_price, :foil_mid_price, :foil_high_price, :foil_market_price, :amount)
+        params.permit(:user_id, :magic_the_gatherig_card_id, :amount)
     end
 
     def update_params
         params.permit(:amount)
     end
-
-    before_filter :authorize, only: [:edit, :update, :destroy]
 end
