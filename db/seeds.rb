@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# MagicTheGatherigCard.destroy_all
-# MagicTheGatherigCard.reset_pk_sequence
+MagicTheGatherigCard.destroy_all
+MagicTheGatherigCard.reset_pk_sequence
 
 ENV["api_private_key"]
 ENV["api_public_key"]
@@ -85,7 +85,7 @@ def check_sub_type(values)
     return sub_type
 end
 
-all_cards.each do |card|
+all_cards.order('id ASC').slice(0, 20000).each do |card|
         puts 'card => ', card
         if card
         MagicTheGatherigCard.create(name: card["name"], img_url: card['imageUrl'], category_id: card['categoryId'], group_id: card['groupId'], product_id: card['productId'],rarity: check_rarity(card['extendedData']), sub_type: check_sub_type(card['extendedData']), text: check_text(card['extendedData']))
