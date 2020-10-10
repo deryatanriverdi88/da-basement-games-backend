@@ -8,4 +8,8 @@ class MagicTheGatherigCard < ApplicationRecord
     def self.group_order
         order('group_id ASC')
     end
+
+    def self.name_order
+        order('name ASC')
+    end
 end
