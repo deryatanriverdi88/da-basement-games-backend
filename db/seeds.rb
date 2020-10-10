@@ -95,24 +95,37 @@ token = JSON.parse(token)
 # end
 
 
-# MagicTheGatherigCard.default_order.all.slice(50000, MagicTheGatherigCard.default_order.all.length-1).each do |c|
-MagicTheGatherigCard.default_order.all.each do |c|
+MagicTheGatherigCard.default_order.all.slice(34574, MagicTheGatherigCard.default_order.all.length).each do |c|
+# MagicTheGatherigCard.default_order.all.each do |c|
     # puts 'card name => ' + c['name'] + ' product_id => ' + c['product_id'].to_s + ' id => ' + c['id'].to_s
     price_response = RestClient.get'https://api.tcgplayer.com/pricing/product/' + c['product_id'].to_s, {:Authorization => 'Bearer '+ @access_token}
 
     price_json = JSON.parse(price_response)['results']
     puts 'price_json => ', price_json
-    c.update(
-        normal_low_price: price_json[0]['lowPrice'],
-        normal_mid_price: price_json[0]['midPrice'],
-        normal_high_price: price_json[0]['highPrice'],
-        normal_market_price: price_json[0]['marketPrice'],
-        foil_low_price: price_json[1]['lowPrice'],
-        foil_mid_price:price_json[1]['midPrice'],
-        foil_high_price: price_json[1]['highPrice'],
-        foil_market_price:price_json[1]['marketPrice']
-    )
+    puts 'card in database => ', c['product_id']
+    price_json.map do |price_data|
+    puts 'subTypeName => ', price_data['subTypeName']
+        if price_data['subTypeName'] == 'Normal'
+            puts 'it should be normal price = >', price_data['lowPrice']
+            c.update(
+                normal_low_price: price_data['lowPrice'],
+                normal_mid_price: price_data['midPrice'],
+                normal_high_price: price_data['highPrice'],
+                normal_market_price: price_data['marketPrice']
+            )
+        elsif price_data['subTypeName'] == 'Foil'
+            puts 'it should be foil price = >', price_data['lowPrice']
+            c.update(
+                foil_low_price: price_data['lowPrice'],
+                foil_mid_price:price_data['midPrice'],
+                foil_high_price: price_data['highPrice'],
+                foil_market_price:price_data['marketPrice']
+            )
+        end
+    end
     puts 'card updated' + ' card normal_low_price => ' + c['normal_low_price'].to_s
+    puts 'card updated' + ' card foil_low_price => ' + c['foil_low_price'].to_s
+    # puts 'foil => ', c['foil']
 end
 
 
