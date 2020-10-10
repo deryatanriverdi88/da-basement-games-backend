@@ -32,7 +32,7 @@ class FavoriteCardsController < ApplicationController
     private
 
     def favorite_card_params
-        params.permit(:user_id, :magic_the_gatherig_card_id, :amount)
+        params.permit(:user_id, :magic_the_gatherig_card_id, :amount, :foil)
     end
 
     def update_params

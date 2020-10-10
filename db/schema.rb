@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2020_10_06_031056) do
   create_table "favorite_cards", force: :cascade do |t|
     t.integer "magic_the_gatherig_card_id"
     t.integer "amount"
+    t.boolean "foil"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
