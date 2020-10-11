@@ -95,8 +95,8 @@ token = JSON.parse(token)
 # end
 
 
-MagicTheGatherigCard.default_order.all.slice(34574, MagicTheGatherigCard.default_order.all.length).each do |c|
-# MagicTheGatherigCard.default_order.all.each do |c|
+# MagicTheGatherigCard.default_order.all.slice(34574, MagicTheGatherigCard.default_order.all.length).each do |c|
+MagicTheGatherigCard.default_order.all.each do |c|
     # puts 'card name => ' + c['name'] + ' product_id => ' + c['product_id'].to_s + ' id => ' + c['id'].to_s
     price_response = RestClient.get'https://api.tcgplayer.com/pricing/product/' + c['product_id'].to_s, {:Authorization => 'Bearer '+ @access_token}
 
