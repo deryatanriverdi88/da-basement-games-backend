@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# MagicTheGatherigCard.destroy_all
-# MagicTheGatherigCard.reset_pk_sequence
+MagicTheGatherigCard.destroy_all
+MagicTheGatherigCard.reset_pk_sequence
 
 # ENV["api_private_key"]
 # ENV["api_public_key"]
@@ -128,7 +128,7 @@
 #     # puts 'foil => ', c['foil']
 # end
 
-User.create(email: 'dabasementgames@gmail.com', password: '12345')
+# User.create(email: 'dabasementgames@gmail.com', password: '12345')
 
 
 
